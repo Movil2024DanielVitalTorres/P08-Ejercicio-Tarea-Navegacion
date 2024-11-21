@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">TareasV01</string>
+    <string name="tecnico">Tecnico</string>
+    <string name="descripcion">descripcion</string>
+    <string name="t_cnico">Técnico</string>
+    <string name="descripci_n">Descripción</string>
+    <string name="abierta">Abierta</string>
+    <string name="en_curso">En Curso</string>
+    <string name="cerrada">Cerrada</string>
+    <string name="icono_de_estado_de_la_tarea">Icono de estado de la tarea</string>
+    <string name="estado_de_la_tarea">Estado de la tarea:</string>
+    <string name="est_pagado">Está pagado</string>
+    <string name="icono_de_estado">Icono de estado</string>
+    <string name="imagen_de_nevera">Imagen de nevera</string>
+    <string name="prioridad">Prioridad</string>
+    <string name="alta">Alta</string>
+    <string name="media">Media</string>
+    <string name="baja">Baja</string>
+    <string name="instalaci_n">Instalación</string>
+    <string name="reparaci_n">Reparación</string>
+    <string name="categor_a">Categoría</string>
+
+    <string-array name="prioridad">
+        <item>Baja</item>
+        <item>Media</item>
+        <item>Alta</item>
+    </string-array>
+
+    <string-array name="estados">
+        <item>Abierta</item>
+        <item>En Curso</item>
+        <item>Cerrada</item>
+    </string-array>
+
 </resources>
