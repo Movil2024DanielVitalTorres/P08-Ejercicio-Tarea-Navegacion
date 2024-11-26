@@ -28,6 +28,7 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,6 +41,8 @@ import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import net.iessochoa.danielvitaltorres.tareasv01.R
 import net.iessochoa.danielvitaltorres.tareasv01.ui.components.DynamicSelectTextField
 import net.iessochoa.danielvitaltorres.tareasv01.ui.theme.ColorPrioridadAlta
@@ -83,7 +86,11 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun TaskScreen() {
+fun TaskScreen(
+    viewModel: TareaViewModel = viewModel(),
+    modifier: Modifier = Modifier
+) {
+    val uiStateTarea by viewModel.uiStateTarea.collectAsState()
 
     var selectedCategory by remember { mutableStateOf("Reparación") }
 
@@ -96,13 +103,12 @@ fun TaskScreen() {
     var listaPrioridad = stringArrayResource(id = R.array.prioridad).toList()
     var selectedPriority by remember { mutableStateOf(listaPrioridad[0]) }
 
-    var colorFondo=if(listaPrioridad[2] == selectedPriority) ColorPrioridadAlta else
-        Color.Transparent
+    //var colorFondo=if(listaPrioridad[2] == selectedPriority) ColorPrioridadAlta else Color.Transparent
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorFondo)
+            .background(uiStateTarea.colorFondo)
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
@@ -120,11 +126,9 @@ fun TaskScreen() {
 
                 DynamicSelectTextField(
                     label = stringResource(R.string.prioridad),
-                    options = listOf(stringResource(R.string.alta),
-                        stringResource(R.string.media), stringResource(R.string.baja)
-                    ),
-                    selectedValue = selectedPriority,
-                    onValueChangedEvent = { selectedPriority = it }
+                    options = viewModel.listaPrioridad,
+                    selectedValue = uiStateTarea.prioridad,
+                    onValueChangedEvent = { viewModel.onValueChangePrioridad(it) }
                 )
             }
             Image(

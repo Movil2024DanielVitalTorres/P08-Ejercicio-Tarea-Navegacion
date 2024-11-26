@@ -32,4 +32,9 @@
         <item>Cerrada</item>
     </string-array>
 
+    <string-array name="categoria">
+        <item>Reparacion</item>
+        <item>Instalacion</item>
+    </string-array>
+
 </resources>
