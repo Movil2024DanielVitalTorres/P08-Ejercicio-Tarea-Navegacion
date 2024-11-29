@@ -119,9 +119,9 @@ fun TaskScreen(
                 .weight(1F)){
                 DynamicSelectTextField(
                     label = stringResource(R.string.categor_a),
-                    options = listOf(stringResource(R.string.reparaci_n), stringResource(R.string.instalaci_n)),
-                    selectedValue = selectedCategory,
-                    onValueChangedEvent = { selectedCategory = it }
+                    options = viewModel.listaCategoria,
+                    selectedValue = uiStateTarea.categoria,
+                    onValueChangedEvent = { viewModel.onValueChangeCategoria(it) }
                 )
 
                 DynamicSelectTextField(
@@ -146,14 +146,17 @@ fun TaskScreen(
         Row() {
             Icon(
                 painter = painterResource(
-                    id = if (isPaid) R.drawable.baseline_thumb_up_24 else R.drawable.baseline_thumb_down_24
+                    id = if (uiStateTarea.pagado) R.drawable.baseline_thumb_up_24 else R.drawable.baseline_thumb_down_24
                 ),
                 contentDescription = stringResource(R.string.icono_de_estado),
                 modifier = Modifier.padding(5.dp)
             )
             Text(stringResource(R.string.est_pagado))
-            Switch(checked = isPaid,
-                onCheckedChange = { isChecked -> isPaid = isChecked })
+            Switch(
+                checked = uiStateTarea.pagado,
+                onCheckedChange = { isChecked -> viewModel.onValueChangePagado(isChecked)
+                }
+            )
 
         }
 
@@ -170,47 +173,39 @@ Row(){
     )}
 
         Row {
-            RadioButton(selected = taskStatus == stringResource(R.string.abierta), onClick = { taskStatus = "Abierta" })
-            Text("Abierta")
+            RadioButton(selected = uiStateTarea.estado == stringResource(R.string.abierta), onClick = { taskStatus = "Abierta" })
+            Text(stringResource(R.string.abierta2))
             Spacer(modifier = Modifier.width(16.dp))
-            RadioButton(selected = taskStatus == stringResource(R.string.en_curso), onClick = { taskStatus = "En Curso" })
-            Text("En Curso")
+            RadioButton(selected = uiStateTarea.estado == stringResource(R.string.en_curso), onClick = { taskStatus = "En Curso" })
+            Text(stringResource(R.string.en_curso2))
             Spacer(modifier = Modifier.width(16.dp))
-            RadioButton(selected = taskStatus == stringResource(R.string.cerrada), onClick = { taskStatus = "Cerrada" })
-            Text("Cerrada")
+            RadioButton(selected = uiStateTarea.estado == stringResource(R.string.cerrada), onClick = { taskStatus = "Cerrada" })
+            Text(stringResource(R.string.cerrada2))
         }
 
 
-        Text("Valoración cliente:")
-        Row {
-            for (i in 1..5) {
-                IconButton(onClick = { rating = i }) {
-                    Icon(
-                        imageVector = Icons.Default.Face,
-                        contentDescription = null,
-                        tint = if (i <= rating) Color.Blue else Color.Gray
-                    )
-                }
-            }
-        }
+        Text(stringResource(R.string.valoraci_n_cliente))
+        RatingBar(
+            currentRating = uiStateTarea.valoracion,
+            onRatingChanged = { viewModel.onValueChangeValoracion(it) }
+        )
+
 
 
         OutlinedTextField(
-            value = technicianName,
-            onValueChange = { technicianName = it },
+            value = uiStateTarea.tecnico,
+            onValueChange = { viewModel.onTecnicoValueChange(it) },
             label = { Text(text = stringResource(R.string.tecnico)) },
             placeholder = { Text(text = stringResource(R.string.tecnico)) },
             modifier = Modifier.fillMaxWidth()
         )
 
         OutlinedTextField(
-            value = description,
-            onValueChange = { description = it },
+            value = uiStateTarea.descripcion,
+            onValueChange = { viewModel.onDescripcionValueChange(it) },
             label = { Text(text = stringResource(R.string.descripcion)) },
             placeholder = { Text(text = stringResource(R.string.descripcion)) },
-            modifier = Modifier
-                .fillMaxWidth()
-                .verticalScroll(rememberScrollState())
+            modifier = Modifier.fillMaxWidth()
         )
 
     }

@@ -19,6 +19,10 @@
     <string name="instalaci_n">Instalación</string>
     <string name="reparaci_n">Reparación</string>
     <string name="categor_a">Categoría</string>
+    <string name="abierta2">Abierta</string>
+    <string name="en_curso2">En Curso</string>
+    <string name="cerrada2">Cerrada</string>
+    <string name="valoraci_n_cliente">Valoración cliente:</string>
 
     <string-array name="prioridad">
         <item>Baja</item>

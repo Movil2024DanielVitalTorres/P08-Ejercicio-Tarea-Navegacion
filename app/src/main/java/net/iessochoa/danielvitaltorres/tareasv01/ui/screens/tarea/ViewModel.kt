@@ -14,12 +14,18 @@ class TareaViewModel(application: Application): AndroidViewModel(application){
 
     //prioridad
     val listaPrioridad = context.resources.getStringArray(R.array.prioridad).toList()
+    val listaCategoria = context.resources.getStringArray(R.array.categoria).toList()
     val PRIORIDAD_ALTA = listaPrioridad[2]
 
     private val _uiStateTarea = MutableStateFlow(
         UiStateTarea(prioridad = listaPrioridad[0]
         ))
     val uiStateTarea: StateFlow<UiStateTarea> = _uiStateTarea.asStateFlow()
+
+    private val _uiCategoryTarea = MutableStateFlow(
+        UiStateTarea(categoria = listaCategoria[0]
+        ))
+    val uiCategoryTarea: StateFlow<UiStateTarea> = _uiCategoryTarea.asStateFlow()
 
     fun onValueChangePrioridad(nuevaPrioridad: String){
         val colorFondo: Color
@@ -33,5 +39,32 @@ class TareaViewModel(application: Application): AndroidViewModel(application){
             colorFondo = colorFondo
         )
     }
+
+    fun onValueChangeCategoria(nuevaCategoria: String) {
+        _uiStateTarea.value = _uiStateTarea.value.copy(categoria = nuevaCategoria)
+    }
+
+    fun onValueChangePagado(nuevoPagado: Boolean) {
+        _uiStateTarea.value = _uiStateTarea.value.copy(
+            pagado = nuevoPagado
+        )
+    }
+
+    fun onValueChangeEstado(nuevoEstado: String){
+        _uiStateTarea.value = _uiStateTarea.value.copy(estado = nuevoEstado)
+    }
+
+    fun onValueChangeValoracion(nuevaValoracion: Int){
+        _uiStateTarea.value = _uiStateTarea.value.copy(valoracion = nuevaValoracion)
+    }
+
+    fun onTecnicoValueChange(nuevoTecnico: String){
+        _uiStateTarea.value = _uiStateTarea.value.copy(tecnico = nuevoTecnico)
+    }
+
+    fun onDescripcionValueChange(nuevaDescripcion: String){
+        _uiStateTarea.value = _uiStateTarea.value.copy(descripcion = nuevaDescripcion)
+    }
+
 
 }
