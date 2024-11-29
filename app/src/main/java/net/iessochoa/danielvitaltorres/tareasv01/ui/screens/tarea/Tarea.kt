@@ -25,6 +25,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -104,6 +106,8 @@ fun TaskScreen(
     var selectedPriority by remember { mutableStateOf(listaPrioridad[0]) }
 
     //var colorFondo=if(listaPrioridad[2] == selectedPriority) ColorPrioridadAlta else Color.Transparent
+
+    Scaffold(modifier = Modifier.fillMaxSize()) {innerPadding -> Surface(modifier = Modifier.padding(innerPadding), color = uiStateTarea.colorFondo){
 
     Column(
         modifier = Modifier
@@ -210,6 +214,7 @@ Row(){
 
     }
 }
+    } }
 
 
 
