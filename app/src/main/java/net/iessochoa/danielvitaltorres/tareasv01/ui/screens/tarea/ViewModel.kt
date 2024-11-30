@@ -51,19 +51,44 @@ class TareaViewModel(application: Application): AndroidViewModel(application){
     }
 
     fun onValueChangeEstado(nuevoEstado: String){
-        _uiStateTarea.value = _uiStateTarea.value.copy(estado = nuevoEstado)
+        _uiStateTarea.value = _uiStateTarea.value.copy(
+            estado = nuevoEstado)
     }
 
     fun onValueChangeValoracion(nuevaValoracion: Int){
-        _uiStateTarea.value = _uiStateTarea.value.copy(valoracion = nuevaValoracion)
+        _uiStateTarea.value = _uiStateTarea.value.copy(
+            valoracion = nuevaValoracion)
     }
 
     fun onTecnicoValueChange(nuevoTecnico: String){
-        _uiStateTarea.value = _uiStateTarea.value.copy(tecnico = nuevoTecnico)
+        _uiStateTarea.value = _uiStateTarea.value.copy(
+            tecnico = nuevoTecnico, esFormularioValido = nuevoTecnico.isNotBlank() && _uiStateTarea.value.descripcion.isNotBlank() )
     }
 
     fun onDescripcionValueChange(nuevaDescripcion: String){
-        _uiStateTarea.value = _uiStateTarea.value.copy(descripcion = nuevaDescripcion)
+        _uiStateTarea.value = _uiStateTarea.value.copy(
+            descripcion = nuevaDescripcion, esFormularioValido = nuevaDescripcion.isNotBlank() && _uiStateTarea.value.tecnico.isNotBlank())
+    }
+
+    //muestra el diálogo
+    fun onGuardar(){
+        _uiStateTarea.value = _uiStateTarea.value.copy(
+            mostrarDialogo = true
+        )
+    }
+
+    //guardará los cambios, por el momento solo cierra el diálogo
+    fun onConfirmarDialogoGuardar(){
+        _uiStateTarea.value = _uiStateTarea.value.copy(
+            mostrarDialogo = false
+        )
+    }
+
+    //cierra el diálogo
+    fun onCancelarDialogoGuardar(){
+        _uiStateTarea.value = _uiStateTarea.value.copy(
+            mostrarDialogo = false
+        )
     }
 
 

@@ -23,6 +23,9 @@
     <string name="en_curso2">En Curso</string>
     <string name="cerrada2">Cerrada</string>
     <string name="valoraci_n_cliente">Valoración cliente:</string>
+    <string name="atenci_n">Atención</string>
+    <string name="desea_guardar_los_cambios">Desea guardar los cambios?</string>
+    <string name="tarea_guardada">Tarea guardada</string>
 
     <string-array name="prioridad">
         <item>Baja</item>
