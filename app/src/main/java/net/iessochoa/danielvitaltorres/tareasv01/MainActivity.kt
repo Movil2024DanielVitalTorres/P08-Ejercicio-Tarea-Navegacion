@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import net.iessochoa.danielvitaltorres.tareasv01.ui.screens.tarea.TaskScreen
+import net.iessochoa.danielvitaltorres.tareasv01.ui.screens.tarea.tarea.TaskScreen
 import net.iessochoa.danielvitaltorres.tareasv01.ui.theme.TareasV01Theme
 
 class MainActivity : ComponentActivity() {

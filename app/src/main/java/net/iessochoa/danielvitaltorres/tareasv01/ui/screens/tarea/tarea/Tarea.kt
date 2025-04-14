@@ -1,4 +1,4 @@
-package net.iessochoa.danielvitaltorres.tareasv01.ui.screens.tarea
+package net.iessochoa.danielvitaltorres.tareasv01.ui.screens.tarea.tarea
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -15,10 +15,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Star
@@ -50,14 +47,12 @@ import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 import kotlinx.coroutines.launch
 import net.iessochoa.danielvitaltorres.tareasv01.R
 import net.iessochoa.danielvitaltorres.tareasv01.ui.components.DialogoDeConfirmacion
 import net.iessochoa.danielvitaltorres.tareasv01.ui.components.DynamicSelectTextField
-import net.iessochoa.danielvitaltorres.tareasv01.ui.theme.ColorPrioridadAlta
 import net.iessochoa.danielvitaltorres.tareasv01.ui.theme.TareasV01Theme
 
 

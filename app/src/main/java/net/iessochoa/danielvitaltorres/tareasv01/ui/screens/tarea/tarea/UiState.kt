@@ -1,4 +1,4 @@
-package net.iessochoa.danielvitaltorres.tareasv01.ui.screens.tarea
+package net.iessochoa.danielvitaltorres.tareasv01.ui.screens.tarea.tarea
 
 import androidx.compose.ui.graphics.Color
 
@@ -12,5 +12,6 @@ data class UiStateTarea(
     val descripcion: String = "",
     val colorFondo: Color = Color.Transparent,
     val esFormularioValido: Boolean = false,
-    val mostrarDialogo: Boolean = false
+    val mostrarDialogo: Boolean = false,
+    val esTareaNueva: Boolean = true
 )
