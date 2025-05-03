@@ -8,7 +8,7 @@ import kotlin.random.Random
 
 object TempModelTareas {
     //lista de tareas
-    private val listaTareas = ArrayList<Tarea>()
+    val listaTareas = ArrayList<Tarea>()
     //StateFlow observable
     private val _tareasStateFlow =
         MutableStateFlow<List<Tarea>>(listaTareas)
@@ -57,7 +57,7 @@ object TempModelTareas {
             "Pepito Grillo"
         )
         val fotos=
-            listOf(R.drawable.demioEj1,R.drawable.semaforoEj2,R.drawable.monitorEj3,R.drawable.palmeraEj4)
+            listOf(R.drawable.demio_ej1,R.drawable.semaforo_ej2,R.drawable.monitor_ej3,R.drawable.palmera_ej4)
         lateinit var tarea: Tarea
         (1..10).forEach({
             tarea = Tarea(

@@ -19,6 +19,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Star
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -42,6 +43,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
@@ -51,6 +53,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 
 import kotlinx.coroutines.launch
 import net.iessochoa.danielvitaltorres.tareasv01.R
+import net.iessochoa.danielvitaltorres.tareasv01.ui.components.AppBar
 import net.iessochoa.danielvitaltorres.tareasv01.ui.components.DialogoDeConfirmacion
 import net.iessochoa.danielvitaltorres.tareasv01.ui.components.DynamicSelectTextField
 import net.iessochoa.danielvitaltorres.tareasv01.ui.theme.TareasV01Theme
@@ -96,6 +99,9 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun TaskScreen(
     viewModel: TareaViewModel = viewModel(),
+    idTarea: Long? = null,
+    onVolver: () -> Unit = {},
+    onMostrar: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     val uiStateTarea by viewModel.uiStateTarea.collectAsState()
@@ -115,6 +121,9 @@ fun TaskScreen(
 
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
+    val context = LocalContext.current
+    val isTareaNueva = idTarea == null
+    idTarea?.let { viewModel.getTarea(it) }
 
     Scaffold(
         snackbarHost =  {SnackbarHost(snackbarHostState)},
@@ -125,7 +134,7 @@ fun TaskScreen(
                 else {
                     scope.launch{
                         snackbarHostState.showSnackbar(
-                            message = "Hay que rellenar todos los campos",
+                            message = context.getString(R.string.hay_que_rellenar_todos_los_campos),
                             duration = SnackbarDuration.Short
                         )
                     }
@@ -133,13 +142,25 @@ fun TaskScreen(
             }
             ){
                 Icon(painter = painterResource(android.R.drawable.ic_menu_save),
-                    contentDescription = "guardar")
-            }},
-        modifier = Modifier.fillMaxSize()) { innerPadding ->
-        Surface(
-            modifier = Modifier.padding(innerPadding),
-            color = uiStateTarea.colorFondo
-        ) {
+                    contentDescription = stringResource(R.string.guardar)
+                )
+            }
+        },
+        topBar ={
+            AppBar(
+                tituloPantallaActual =
+                    if (uiStateTarea.esTareaNueva)
+                        stringResource(R.string.crear_tarea)
+
+            else
+                        stringResource(R.string.modificar_tarea),
+            puedeNavegarAtras = true,
+            navegaAtras = onVolver
+            ) } ) { innerPadding ->
+
+            Surface(
+                modifier = Modifier.padding(innerPadding),
+                color = uiStateTarea.colorFondo) {
 
 
 
@@ -276,7 +297,7 @@ fun TaskScreen(
                             viewModel.onConfirmarDialogoGuardar()
                             scope.launch {
                                 snackbarHostState.showSnackbar(
-                                    message = ("Tarea guardada"),
+                                    message = context.getString(R.string.tarea_guardada),
                                     duration = SnackbarDuration.Short
                                 )
                             }
@@ -286,12 +307,19 @@ fun TaskScreen(
                         icon = Icons.Default.Info
                     )
                 }
-
+                if (!isTareaNueva){
+                    Spacer(modifier = Modifier.width(16.dp))
+                    Button(
+                        onClick = onMostrar,
+                        enabled = uiStateTarea.listaTareas.isNotEmpty()
+                    ) {
+                        Text(stringResource(R.string.ver_tarea))
+                    }
+                }
             }
         }
     }
-
-     }
+}
 
 
 

@@ -26,6 +26,14 @@
     <string name="atenci_n">Atención</string>
     <string name="desea_guardar_los_cambios">Desea guardar los cambios?</string>
     <string name="tarea_guardada">Tarea guardada</string>
+    <string name="ir_atr_s">Ir atrás</string>
+    <string name="guardar">guardar</string>
+    <string name="hay_que_rellenar_todos_los_campos">Hay que rellenar todos los campos</string>
+    <string name="crear_tarea">Crear Tarea</string>
+    <string name="modificar_tarea">Modificar Tarea</string>
+    <string name="ver_tarea">Ver tarea</string>
+    <string name="tarea_nueva">Tarea Nueva</string>
+    <string name="lista_tareas">Lista Tareas</string>
 
     <string-array name="prioridad">
         <item>Baja</item>

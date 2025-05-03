@@ -22,7 +22,7 @@ data class Tarea(
         //dos tareas son iguales cuando su id es igual.
 // Facilita la búsqueda en un arrayList
         override fun equals(other: Any?): Boolean {
-            return (other is Tarea) && (this.id == other?.id)
+            return (other is Tarea) && (this.idContador == other?.id)
         }
 
 

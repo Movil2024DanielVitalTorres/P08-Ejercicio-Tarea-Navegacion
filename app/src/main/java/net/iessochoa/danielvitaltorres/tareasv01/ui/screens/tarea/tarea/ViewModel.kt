@@ -129,7 +129,7 @@ class TareaViewModel(application: Application): AndroidViewModel(application){
             Tarea(
                 categoria = listaCategoria.indexOf(uiStateTarea.value.categoria),
                 prioridad = listaPrioridad.indexOf(uiStateTarea.value.prioridad),
-                img = R.drawable.monitorEj3.toString(),
+                img = R.drawable.monitor_ej3.toString(),
                 pagado = uiStateTarea.value.pagado,
                 estado = listaEstado.indexOf(uiStateTarea.value.estado),
                 valoracionCliente = uiStateTarea.value.valoracion,
