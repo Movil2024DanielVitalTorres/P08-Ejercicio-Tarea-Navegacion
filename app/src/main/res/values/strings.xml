@@ -34,6 +34,7 @@
     <string name="ver_tarea">Ver tarea</string>
     <string name="tarea_nueva">Tarea Nueva</string>
     <string name="lista_tareas">Lista Tareas</string>
+    <string name="mostrar">Mostrar</string>
 
     <string-array name="prioridad">
         <item>Baja</item>

@@ -11,16 +11,11 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import net.iessochoa.danielvitaltorres.tareasv01.R
+import net.iessochoa.danielvitaltorres.tareasv01.ui.theme.LightBlue80
 
-
-/**
- * Composable que define la barra de navegación superior de la app
- * @param tituloPantallaActual pantalla actual. Permite mostrar el titulo correspondiente.
- * @param puedeNavegarAtras indica si se puede navegar hacia atrás. La pantalla de inicio no puede tener navegación hacia atrás
- * @param navegaAtras acción de navegación hacia atrás. Lambda que se ejecuta al pulsar el botón de navegación hacia atrás
- */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppBar(
@@ -33,7 +28,7 @@ fun AppBar(
         //Recuperamos el título del enum AppScreen
         title = { Text(text = tituloPantallaActual) },
         colors = TopAppBarDefaults.mediumTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
+            containerColor = LightBlue80
         ),
         modifier = modifier,
         navigationIcon = {
