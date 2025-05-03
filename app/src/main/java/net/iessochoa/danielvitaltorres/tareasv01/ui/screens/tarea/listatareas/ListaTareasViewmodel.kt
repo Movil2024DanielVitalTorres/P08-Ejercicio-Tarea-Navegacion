@@ -13,4 +13,10 @@ class ListaTareasViewModel() : ViewModel() {
         started = SharingStarted.WhileSubscribed(5000),
         initialValue = emptyList()
     )
+    init {
+        if (TempModelTareas.listaTareas.isEmpty()){
+            TempModelTareas.iniciaPruebaTareas()
+        }
+    }
+
 }

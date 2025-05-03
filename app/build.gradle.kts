@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.jetbrainsKotlinSerialization)
 }
 
 android {
@@ -67,6 +68,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    //Implementación de Viewmodel lifecycle
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
     //Navigation
